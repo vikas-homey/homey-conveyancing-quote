@@ -1,0 +1,26 @@
+/* Styles for /prototypes screens only — loaded by layouts/prototype.html.slim
+   and by nothing else.
+ *
+ * WHY THIS FILE EXISTS. The prototype layout used to load only production
+ * stylesheets (tailwind, actiontext, forms), so a prototype that needed a
+ * keyframe had nowhere to put it and the first one went into
+ * app/assets/tailwind/application.css — the bundle every production page
+ * ships. .claude/commands/prototype.md is explicit that prototypes are
+ * "dev/staging chrome, never shipped", so that was the first thing across the
+ * line and would have been the precedent every later prototype pointed at.
+ *
+ * Anything a prototype needs that production does not belongs here. */
+
+/* Homey University: a section or card rising into place when it is revealed
+   (the lesson completion card, and the exam question on each step — added and
+   removed by prototypes--university-exam). */
+@keyframes uni-rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.uni-rise { animation: uni-rise .3s cubic-bezier(.2, .7, .3, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .uni-rise { animation: none; }
+}
